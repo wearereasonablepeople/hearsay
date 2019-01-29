@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {v4} from 'uuid';
 import {IHearsayProviderProps, IListener} from './domain';
 export {reducer} from './reducer';
+export {hearsay} from './hoc';
 
 export const storeListenerMiddleware = s => next => action => {
   const result = next(action);
