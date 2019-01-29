@@ -17,6 +17,8 @@
     "typescript": "^3.3.0-dev.20190111"
   },
   "dependencies": {
+    "@types/react": "^16.7.22",
+    "react": "^16.7.0",
     "uuid": "^3.3.2"
   }
 }

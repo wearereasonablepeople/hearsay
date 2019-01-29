@@ -12,3 +12,7 @@ export interface IListener extends IUnregisteredListener {
 export interface IStoreListenerState {
   listeners: IListener[];
 }
+
+export interface IHearsayProviderProps {
+  store: object;
+}
