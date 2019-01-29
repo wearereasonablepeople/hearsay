@@ -13,6 +13,10 @@ export interface IStoreListenerState {
   listeners: IListener[];
 }
 
+export interface IStore {
+  dispatch: () => any;
+}
+
 export interface IHearsayProviderProps {
-  store: object;
+  store: IStore;
 }

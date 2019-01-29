@@ -12,16 +12,16 @@ export const storeListenerMiddleware = s => next => action => {
   return result;
 };
 
-export const subscribeFactory = store => (trigger, effect) => {
+export const subscribeFactory = dispatch => (trigger, effect) => {
   const id = v4();
-  store.dispatch({type: 'LISTENER_SUBSCRIBE', payload: {trigger, effect, id}});
-  return () => store.dispatch({type: 'LISTENER_UNSUBSCRIBE', payload: id});
+  dispatch({type: 'LISTENER_SUBSCRIBE', payload: {trigger, effect, id}});
+  return () => dispatch({type: 'LISTENER_UNSUBSCRIBE', payload: id});
 };
 
 export const HearsayContext = React.createContext(null);
 export class HearsayProvider extends Component<IHearsayProviderProps, any> {
   render() {
     const {store} = this.props;
-    return <HearsayContext.Provider value={subscribeFactory(store)}/>;
+    return <HearsayContext.Provider value={subscribeFactory(store.dispatch)}/>;
   }
 }
