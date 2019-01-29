@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {v4} from 'uuid';
-import {IHearsayProviderProps, IListener} from './domain';
+import {IHearsayProviderProps} from './domain';
 export {reducer} from './reducer';
 export {hearsay} from './hoc';
 
@@ -8,8 +8,8 @@ export const storeListenerMiddleware = s => next => action => {
   const result = next(action);
   const {storeListeners} = s.getState();
   storeListeners.listeners
-    .filter((x: IListener) => x.trigger === action.type)
-    .map((x: IListener) => x.effect(action.payload));
+    .filter(x => x.trigger === action.type)
+    .map(x => x.effect(action.payload));
   return result;
 };
 
